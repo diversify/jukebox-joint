@@ -1,5 +1,5 @@
 angular.module('jukeboxApp')
-  .controller('SearchSongCtrl', function ($scope, Spotify, $routeParameters) {
+  .controller('SearchSongCtrl', function ($scope, Spotify, $routeParams, $http) {
     
     $scope.searchSong = function()
     {
@@ -10,9 +10,9 @@ angular.module('jukeboxApp')
       });
     };
     
-    $scope.addSong = function()
+    $scope.addSong = function(trackId)
     {
-      $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.id).
+      $http.post('/add-song/playlist/' + $routeParams.playlistId + '/track/' + trackId).
         success(function(data, status, headers, config) {
           
           console.log('Track added');
