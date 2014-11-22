@@ -25,8 +25,10 @@ def upvote_track(playlistid, trackid):
 	session.query(Track).filter(
 		Track._id == trackid, 
 		Track.playlist_id == playlistid).update({Track.vote_count: Track.vote_count + 1})
+	session.commit()
 
 def downvote_track(playlistid, trackid):
 	session.query(Track).filter(
 		Track._id == trackid, 
 		Track.playlist_id == playlistid).update({Track.vote_count: Track.vote_count - 1})
+	session.commit()
