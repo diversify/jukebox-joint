@@ -1,5 +1,5 @@
 angular.module('jukeboxApp')
-  .controller('AddPlaylistCtrl', function ($rootScope, $scope, Spotify, Playlist) {
+  .controller('AddPlaylistCtrl', function ($rootScope, $scope, Spotify, Playlist, $location) {
     
     $scope.playlist = {};
     
@@ -10,10 +10,11 @@ angular.module('jukeboxApp')
       Spotify.createPlaylist($rootScope.user.id, {name: $scope.playlist.name}).then(function(data) {
         $scope.playlist.playlistId = data.id;
         $scope.playlist.userId = $rootScope.user.id;
-        console.log('Saved in Spotify');
         
         /* Save it in Jukebox */
-        Playlist.create($scope.playlist);
+        Playlist.create($scope.playlist, function() {
+          $location.path("/playlist/" + $scope.playlist.userId + "/" + $scope.playlist.playlistId);
+        });
         
         /* NOW REDIRECT TO IT DAWG */
       });
