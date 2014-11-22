@@ -20,8 +20,11 @@ angular
       .when('/login', {
         templateUrl : 'login.html'
       })
-      .when('/playlist/:id', {
+      .when('/playlist/:userId/:playlistId', {
         templateUrl : 'playlist.html'
+      })
+      .otherwise({
+        redirectTo: '/login'
       });
   });
   
