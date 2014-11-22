@@ -1,9 +1,18 @@
 from flask import Flask, send_file, jsonify
 app = Flask(__name__, static_url_path='', static_folder='../static')
 
+import requests
+import json
 import db
 
 refresh_token = 'AQB6SmB6U3b9Gto2AOAPyde21Jd63ew1HxE1q3K20icxitUh3kkjLVj8tN5woojpvLQHR84au1UwDK97KFHQ19rF16N5ZA2kqsOHSNEjX0OtgCXHoZBoHAnNmbfG9siOrVM'
+secret = 'ODI5ZGM1ZjczNmE5NDJiNGI4OTVhZDZjZGI2YjE3MmU6ZmI3NTQ1YjhkNTQ3NDg0OWIzYWRkYjQ3OGIxMzg3NWY='
+
+"""url = "https://accounts.spotify.com/api/token"
+headers = {'Authorization': 'Basic ' + secret}
+payload = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
+request = requests.post(url, data=json.dumps(payload), headers=headers)
+print request"""
 
 @app.route('/')
 def root():
@@ -70,6 +79,11 @@ def get_playlists(userid):
 		playlist['tracks'] = _get_tracks(playlist_entry)
 		playlists.append(playlist)
 	return jsonify(playlists=playlists)
+
+def get_access_token():
+	payload = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
+	request = requests.post("https://accounts.spotify.com/api/token", params=payload)
+	print request.text['access_token']
 
 
 if __name__ == '__main__':
