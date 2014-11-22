@@ -24,6 +24,3 @@ class Track(Base):
 		self._id = id
 		self.playlist_id = playlist_id
 		self.vote_count = 0
-
-	def vote(self, score):
-		self.vote_count += score

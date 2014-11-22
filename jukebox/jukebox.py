@@ -7,6 +7,16 @@ import db
 def root():
     return send_file('../templates/index.html')
 
+@app.route('/upvote/playlist/<playlistid>/track/<trackid>')
+def upvote(playlistid, trackid):
+	db.upvote_track(playlistid, trackid)
+	return jsonify(Success="Track was upvoted")
+
+@app.route('/downvote/playlist/<playlistid>/track/<trackid>')
+def downvote(playlistid, trackid):
+	db.downvote_track(playlistid, trackid)
+	return jsonify(Success="Track was downvoted")
+
 @app.route('/add-song/playlist/<playlistid>/track/<trackid>')
 def add_song(playlistid, trackid):
 	db.add_track(trackid, playlistid)
@@ -28,8 +38,6 @@ def get_playlist(playlistid):
 		track['ID'] = track_entry._id
 		track['voteCount'] = track_entry.vote_count
 		tracks.append(track)
-
-	print tracks
 
 	if not playlist:
 		return jsonify(Error="Playlist ID was not found")
