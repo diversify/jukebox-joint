@@ -1,0 +1,159 @@
+p {
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+}
+
+
+/* ====== Fältet högst upp, den med loggan ======= */
+
+.titlebar {
+    width: 640px;
+    height: 130px;
+    background-color: #727272;
+    -moz-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ====== SÖKFÄLTET ======= */
+
+
+.searchbox {
+    width: 640px;
+    height: 100px;
+    background-color: #4D4D4D;
+}
+
+/* Den man skriver i */
+.searchfield {
+    width: 515px;
+    height: 55px;
+    background-color: #FFF;
+    -moz-border-radius: 28px;
+    -webkit-border-radius: 28px;
+    border-radius: 28px;
+    -moz-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.14);
+/* Texten */
+    color: #252525;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+/* ====== NOW PLAYING ====== */
+.mainbox_np {
+    width: 640px;
+    height: 230px;
+    background-color: #A4A4A4;
+    -moz-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.album_np {
+    width: 160px;
+    height: 160px;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.timebar, .timebargreen {
+    width: 220px;
+    height: 12px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+
+}
+
+.timebar {
+    background-color: #909090;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 1px 1px rgba(0, 0, 0, 0.29);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 1px 1px rgba(0, 0, 0, 0.29);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 1px 1px rgba(0, 0, 0, 0.29);
+}
+
+.timebargreen {
+    background-color: #83ED6B;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.31);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.31);
+}
+
+
+.profpic {
+    width: 116px;
+    height: 116px;
+    border: 3px solid #FFF;
+    -moz-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.2);
+    -moz-border-radius: 57px;
+    -webkit-border-radius: 57px;
+    border-radius: 57px;
+}
+
+.text_nowPlaying {
+    color: #555;
+    font-size: 16px;
+    font-weight: 400;
+}
+.text_songtitle {
+    color: #323232;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+
+/* ====== The queue, List Items ======= */
+
+/* Main box */
+.listitembox {
+    width: 580px; /* (90%) */
+    height: 120px;
+    background-color: #8B8B8B;
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.profpic_small {
+    width: 66px;
+    height: 66px;
+    -moz-border-radius: 33px;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+    opacity: 0.75;
+}
+
+.rating {
+    font-size: 54px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0.2px 3px 3px rgba(0, 0, 0, 0.14);
+}
+
+.ratingGreen {
+	color: #86FF6A;
+}
+
+.ratingNeutral {
+    color: #CCC;
+}
+
+.ratingRed {
+	color: #FB9494;
+}
+/* The number in the queue the song is in */
+.order {
+    color: #414141;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0.1px 1px 0 rgba(255, 255, 255, 0.2);
+}
