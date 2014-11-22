@@ -26,17 +26,23 @@ def add_song(playlistid, trackid):
 	db.add_track(trackid, playlistid)
 	return jsonify(Success="Track was added")
 
-
 @app.route('/add-playlist/user/<userid>/playlist/<playlistid>', methods=['POST'])
 def add_playlist(userid, playlistid):
+	playlist = db.get_playlist(playlistid)
+	if playlist:
+		return jsonify(Error="Playlist is already added") 
+	
 	db.add_playlist(playlistid, userid)
 	return jsonify(Success="Playlist was added")
 
 @app.route('/get-playlist/<playlistid>')
 def get_playlist(playlistid):
 	playlist = db.get_playlist(playlistid)
-	tracks = []
 
+	if not playlist:
+		return jsonify(Error="Playlist ID was not found")
+
+	tracks = []
 	for track_entry in db.get_tracks_for_playlist(playlistid):
 		track = {}
 		track['ID'] = track_entry._id
@@ -44,9 +50,6 @@ def get_playlist(playlistid):
 		tracks.append(track)
 
 	tracks.sort(key=lambda x: x['voteCount'], reverse=True)
-
-	if not playlist:
-		return jsonify(Error="Playlist ID was not found")
 	
 	return jsonify(playlist=(dict(
 		id=playlist._id,
