@@ -1,5 +1,5 @@
 angular.module('jukeboxApp')
-  .controller('PlaylistCtrl', function ($rootScope, $scope, $routeParams, Spotify, $http, _) {
+  .controller('PlaylistCtrl', function ($rootScope, $scope, $routeParams, Spotify, $http, _, $location) {
     $scope.playlistId = $routeParams.playlistId;
     $scope.userId = 'gaeamearth1';
     
@@ -34,18 +34,25 @@ angular.module('jukeboxApp')
     
     $scope.downvote = function(track)
     {
-      $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.id).
-        success(function(data, status, headers, config) {
-          var thisTrack = _.find($scope.tracks, function(trk) {
-            return trk.id == track.id;
-          });
-          
-          thisTrack.vote--;
-          console.log('Downvoted');
+      var thisTrack = _.find($scope.tracks, function(trk) {
+        return trk.id == track.id;
+      });
+      
+      if(thisTrack.vote !== 0) {
+          $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.id).
+            success(function(data, status, headers, config) {
+              thisTrack.vote--;
+              console.log('Downvoted');
         }).
         error(function(data, status, headers, config) {
           console.log('Dun goofed');
         });
+      }
+    };
+    
+    $scope.addSong = function()
+    {
+      $location.path('/search/' + $scope.playlistId);
     };
     
     
