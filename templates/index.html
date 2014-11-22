@@ -26,7 +26,11 @@
   
   <script type="text/ng-template" id="search.html">
     <div ng-controller="SearchSongCtrl">
-      <input ng-model="searchQuery" ng-blur="searchSong()" />
+      <h1>Add songs to NAME OF PLAYLIST</h1>
+      <form ng-submit="searchSong()">
+        <input ng-model="searchQuery" placeholder="Search for songs..." />
+        <button type="submit">Search</button>
+      </form>
       {{ searching }}
       <div class="row" ng-repeat="track in searchResults.tracks.items">
         <div class="col-xs-3">
@@ -37,7 +41,7 @@
           <h4>{{ track.artists[0].name }}</h3>
           <h6>{{ track.album.name }}</h5>
         </div>
-        <div class="col-xs-3" ng-click="addSong()">
+        <div class="col-xs-3" ng-click="addSong(track.id)">
           Add to playlist
         </div>
       </div>
@@ -51,6 +55,10 @@
       <input ng-model="playlist.name" />
       
       <button ng-click="addPlaylist()">Add playlist</button>
+      
+      <div class="row" ng-repeat="playlist in playlists">
+        <a href="#/playlist/{{ playlist[0].id }}">{{ playlist[0].id }}</a>
+      </div>
     </div>
   </script>
   
@@ -64,9 +72,10 @@
     <div ng-controller="PlaylistCtrl">
       <h1>{{ name }}</h1>
       <h4>Share this Playlist: URL HERE</h4>
+      <button ng-click="addSong()">Add a song</button>
       <div class="row" ng-repeat="track in tracks | orderBy: 'vote' : true">
         <div class="col-xs-3">image</div>
-        <div class="col-xs-6">{{ track.title }} {{ track.vote }}</div>
+        <div class="col-xs-6">{{ track.ID }} SHOULD BE NAME {{ track.voteCount }}</div>
         <div class="col-xs-3">
           <button ng-click="upvote(track)">Upvote</button>
           <button ng-click="downvote(track)">Downvote</button>
