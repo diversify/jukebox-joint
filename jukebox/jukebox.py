@@ -35,6 +35,17 @@ def add_playlist(userid, playlistid):
 	db.add_playlist(playlistid, userid)
 	return jsonify(Success="Playlist was added")
 
+def _get_tracks(playlist):
+	tracks = []
+	for track_entry in db.get_tracks_for_playlist(playlist._id):
+		track = {}
+		track['ID'] = track_entry._id
+		track['voteCount'] = track_entry.vote_count
+		tracks.append(track)
+
+	tracks.sort(key=lambda x: x['voteCount'], reverse=True)
+	return tracks
+
 @app.route('/get-playlist/<playlistid>')
 def get_playlist(playlistid):
 	playlist = db.get_playlist(playlistid)
@@ -42,19 +53,21 @@ def get_playlist(playlistid):
 	if not playlist:
 		return jsonify(Error="Playlist ID was not found")
 
-	tracks = []
-	for track_entry in db.get_tracks_for_playlist(playlistid):
-		track = {}
-		track['ID'] = track_entry._id
-		track['voteCount'] = track_entry.vote_count
-		tracks.append(track)
-
-	tracks.sort(key=lambda x: x['voteCount'], reverse=True)
-	
 	return jsonify(playlist=(dict(
 		id=playlist._id,
 		owner=playlist.owner,
-		tracks=tracks)))
+		tracks=_get_tracks(playlist))))
+
+@app.route('/get-user-playlists/<userid>')
+def get_playlists(userid):
+	playlists = []
+	for playlist_entry in db.get_playlists(userid):
+		playlist = {}
+		playlist['id'] = playlist_entry._id
+		playlist['owner'] = playlist_entry.owner
+		playlist['tracks'] = _get_tracks(playlist_entry)
+		playlists.append(playlist)
+	return jsonify(playlists=playlists)
 
 
 if __name__ == '__main__':

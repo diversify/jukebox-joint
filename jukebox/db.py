@@ -1,5 +1,5 @@
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 from models import Playlist, Track
 
 engine = create_engine('postgresql://jukeboxuser:@localhost/jukebox', encoding='utf-8')
@@ -17,6 +17,10 @@ def add_playlist(playlistid, user):
 
 def get_playlist(playlistid):
 	return session.query(Playlist).filter(Playlist._id == playlistid).first()
+
+def get_playlists(userid):
+	return session.query(Playlist).filter(
+        (func.lower(Playlist.owner) == func.lower(userid))).all()
 
 def get_tracks_for_playlist(playlistid):
 	return session.query(Track).filter(Track.playlist_id == playlistid).all()
