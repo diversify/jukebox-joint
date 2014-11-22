@@ -4,6 +4,10 @@ angular.module('jukeboxApp')
     $scope.userId = $routeParams.userId;
     
     Spotify.getPlaylist($scope.userId, $scope.playlistId).then(function (data) {
-      console.log(data);
+      $scope.playlist = data;
+      
+      Spotify.getPlaylistTracks($scope.userId, $scope.playlistId).then(function (data) {
+        $scope.tracks = data.items;
+      });
     });
   });

@@ -54,17 +54,15 @@
   </script>
   
   <script type="text/ng-template" id="login.html">
-    <div ng-controller="LoginCtrl">
-      Connect your spotify account
-      
-      <button ng-click="loginUser()">Connect your Spotify account</button>
+    <div ng-controller="LoginCtrl">      
+      <button ng-click="loginUser()">Sign in with Spotify</button>
     </div>
   </script>
   
   <script type="text/ng-template" id="playlist.html">
     <div ng-controller="PlaylistCtrl">
       
-      {{ playlistId }}
+      {{ playlist.name }}
       
     </div>
   </script>
