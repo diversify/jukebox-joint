@@ -3,6 +3,8 @@ app = Flask(__name__, static_url_path='', static_folder='../static')
 
 import db
 
+refresh_token = 'AQB6SmB6U3b9Gto2AOAPyde21Jd63ew1HxE1q3K20icxitUh3kkjLVj8tN5woojpvLQHR84au1UwDK97KFHQ19rF16N5ZA2kqsOHSNEjX0OtgCXHoZBoHAnNmbfG9siOrVM'
+
 @app.route('/')
 def root():
     return send_file('../templates/index.html')
