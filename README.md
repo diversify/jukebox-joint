@@ -22,3 +22,26 @@ Create a local db:
 Run the server:
 
     python jukebox/jukebox.py
+    
+API
+==========
+Add a playlist
+----------
+
+    /add-playlist/user/<userid>/playlist/<playlistid>
+
+Adds a playlist to the database. 
+
+Add a track to a playlist
+----------
+
+    /add-song/playlist/<playlistid>/track/<trackid>
+    
+Adds a track to the specified playlist
+
+Fetch a playlist
+----------
+
+    /get-playlist/<playlistid>
+    
+Fetches a playlist with its info
