@@ -6,6 +6,10 @@ import db
 @app.route('/')
 def root():
     return send_file('../templates/index.html')
+    
+@app.route('/callback')
+def spoti_callback():
+    return send_file('../templates/callback.html')
 
 @app.route('/upvote/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def upvote(playlistid, trackid):
