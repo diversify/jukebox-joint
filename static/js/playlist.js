@@ -5,25 +5,24 @@ angular.module('jukeboxApp')
     
     $scope.name = 'Good playlist';
     
-    $scope.tracks = [
-      {title: 'Hejsan Svejsan 1', id: 214124, vote: 0},
-      {title: 'Hejsan Svejsan 2', id: 214125, vote: 0},
-      {title: 'Hejsan Svejsan 3', id: 214126, vote: 0},
-      {title: 'Hejsan Svejsan 4', id: 214127, vote: 0},
-      {title: 'Hejsan Svejsan 5', id: 214128, vote: 0},
-      {title: 'Hejsan Svejsan 6', id: 214129, vote: 0},
-      {title: 'Hejsan Svejsan 7', id: 214123, vote: 0}
-    ];
+    $http.get('/get-playlist/' + $scope.playlistId).
+        success(function(data, status, headers, config) {
+          $scope.tracks = data.playlist.tracks;
+          console.log($scope.playlist);
+        }).
+        error(function(data, status, headers, config) {
+          console.log('Dun goofed');
+        });
     
     $scope.upvote = function(track)
     {
-      $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.id).
+      $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.ID).
         success(function(data, status, headers, config) {
           var thisTrack = _.find($scope.tracks, function(trk) {
-            return trk.id == track.id;
+            return trk.ID == track.ID;
           });
           
-          thisTrack.vote++;
+          thisTrack.voteCount++;
           
           console.log('Upvoted');
         }).
@@ -35,13 +34,13 @@ angular.module('jukeboxApp')
     $scope.downvote = function(track)
     {
       var thisTrack = _.find($scope.tracks, function(trk) {
-        return trk.id == track.id;
+        return trk.ID == track.ID;
       });
       
-      if(thisTrack.vote !== 0) {
-          $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.id).
+      if(thisTrack.voteCount !== 0) {
+          $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.ID).
             success(function(data, status, headers, config) {
-              thisTrack.vote--;
+              thisTrack.voteCount--;
               console.log('Downvoted');
         }).
         error(function(data, status, headers, config) {
