@@ -16,7 +16,7 @@
   <script src="js/app.js"></script>
   <script src="js/services/playlist.js"></script>
   <script src="js/searchSong.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/addPlaylist.js"></script>
   <script src="js/spotify.js"></script>
   <script src="js/login.js"></script>
 </head>
@@ -42,10 +42,10 @@
     </div>
   </script>
   
-  <script type="text/ng-template" id="main.html">
-    <div ng-controller="MainCtrl">
+  <script type="text/ng-template" id="addPlaylist.html">
+    <div ng-show="ready" ng-controller="AddPlaylistCtrl">
       Add a new playlist
-      
+            
       <input ng-model="playlist.playlistId" />
       
       <button ng-click="addPlaylist()">Add playlist</button>

@@ -14,8 +14,8 @@ angular
       .when('/search', {
         templateUrl : 'search.html'
       })
-      .when('/', {
-        templateUrl : 'main.html'
+      .when('/addPlaylist', {
+        templateUrl : 'addPlaylist.html'
       })
       .when('/login', {
         templateUrl : 'login.html'
