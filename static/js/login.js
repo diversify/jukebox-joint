@@ -1,9 +1,13 @@
 angular.module('jukeboxApp')
-  .controller('LoginCtrl', function ($scope, Spotify) {
+  .controller('LoginCtrl', function ($rootScope, $scope, Spotify) {
 
     $scope.loginUser = function()
     {
-        Spotify.login();
+        Spotify.login().then(function(data) {
+          Spotify.getCurrentUser().then(function(data) {
+            $rootScope.user = data;
+          });
+        });
     };
     
   });
