@@ -39,6 +39,8 @@ def get_playlist(playlistid):
 		track['voteCount'] = track_entry.vote_count
 		tracks.append(track)
 
+	tracks.sort(key=lambda x: x['voteCount'], reverse=True)
+
 	if not playlist:
 		return jsonify(Error="Playlist ID was not found")
 	
