@@ -19,6 +19,8 @@
   <script src="js/addPlaylist.js"></script>
   <script src="js/spotify.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/playlist.js"></script>
+  <script src="js/hej.js"></script>
 </head>
 <body ng-app="jukeboxApp">
   
@@ -43,10 +45,10 @@
   </script>
   
   <script type="text/ng-template" id="addPlaylist.html">
-    <div ng-show="ready" ng-controller="AddPlaylistCtrl">
+    <div ng-controller="AddPlaylistCtrl">
       Add a new playlist
-            
-      <input ng-model="playlist.playlistId" />
+
+      <input ng-model="playlist.name" />
       
       <button ng-click="addPlaylist()">Add playlist</button>
     </div>
@@ -57,6 +59,14 @@
       Connect your spotify account
       
       <button ng-click="loginUser()">Connect your Spotify account</button>
+    </div>
+  </script>
+  
+  <script type="text/ng-template" id="playlist.html">
+    <div ng-controller="PlaylistCtrl">
+      
+      {{ playlistId }}
+      
     </div>
   </script>
   

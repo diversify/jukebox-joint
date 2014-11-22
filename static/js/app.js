@@ -19,6 +19,12 @@ angular
       })
       .when('/login', {
         templateUrl : 'login.html'
+      })
+      .when('/playlist/:id', {
+        templateUrl : 'playlist.html'
+      })
+      .when('/hej', {
+        templateUrl : 'hej.html'
       });
   });
   
