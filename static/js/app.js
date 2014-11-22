@@ -22,9 +22,6 @@ angular
       })
       .when('/playlist/:id', {
         templateUrl : 'playlist.html'
-      })
-      .when('/hej', {
-        templateUrl : 'hej.html'
       });
   });
   
