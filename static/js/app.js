@@ -12,7 +12,7 @@ angular
     SpotifyProvider.setScope('user-read-private playlist-read-private playlist-modify-private playlist-modify-public'); */
     
     $routeProvider
-      .when('/search', {
+      .when('/search/:playlistId', {
         templateUrl : 'search.html'
       })
       .when('/playlists', {
