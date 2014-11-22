@@ -7,23 +7,23 @@ import db
 def root():
     return send_file('../templates/index.html')
 
-@app.route('/upvote/playlist/<playlistid>/track/<trackid>')
+@app.route('/upvote/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def upvote(playlistid, trackid):
 	db.upvote_track(playlistid, trackid)
 	return jsonify(Success="Track was upvoted")
 
-@app.route('/downvote/playlist/<playlistid>/track/<trackid>')
+@app.route('/downvote/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def downvote(playlistid, trackid):
 	db.downvote_track(playlistid, trackid)
 	return jsonify(Success="Track was downvoted")
 
-@app.route('/add-song/playlist/<playlistid>/track/<trackid>')
+@app.route('/add-song/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def add_song(playlistid, trackid):
 	db.add_track(trackid, playlistid)
 	return jsonify(Success="Track was added")
 
 
-@app.route('/add-playlist/user/<userid>/playlist/<playlistid>')
+@app.route('/add-playlist/user/<userid>/playlist/<playlistid>', methods=['POST'])
 def add_playlist(userid, playlistid):
 	db.add_playlist(playlistid, userid)
 	return jsonify(Success="Playlist was added")
