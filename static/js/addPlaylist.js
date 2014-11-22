@@ -15,11 +15,11 @@ angular.module('jukeboxApp')
     /* Called by view, saves a playlist */
     $scope.addPlaylist = function()
     {
-        
+      $scope.playlist.playlistId = $scope.playlist.name;
       /* Save it in Jukebox */
       Playlist.create($scope.playlist, function() {
         /* GET THE PLAYLIST AGAIN */
-        $location.path("/playlist/");
+        $location.path("/playlist/" + $scope.playlist.playlistId); // THIS IS ONLY FOR MOCKS
       });
         
     };

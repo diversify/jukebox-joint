@@ -55,9 +55,8 @@
       <input ng-model="playlist.name" />
       
       <button ng-click="addPlaylist()">Add playlist</button>
-      
-      <div class="row" ng-repeat="playlist in playlists">
-        <a href="#/playlist/{{ playlist[0].id }}">{{ playlist[0].id }}</a>
+      <div class="row" ng-repeat="playlist in playlists.playlists">
+        <a href="#/playlist/{{ playlist.id }}">{{ playlist.id }}</a>
       </div>
     </div>
   </script>
