@@ -8,11 +8,10 @@ import db
 refresh_token = 'AQB6SmB6U3b9Gto2AOAPyde21Jd63ew1HxE1q3K20icxitUh3kkjLVj8tN5woojpvLQHR84au1UwDK97KFHQ19rF16N5ZA2kqsOHSNEjX0OtgCXHoZBoHAnNmbfG9siOrVM'
 secret = 'ODI5ZGM1ZjczNmE5NDJiNGI4OTVhZDZjZGI2YjE3MmU6ZmI3NTQ1YjhkNTQ3NDg0OWIzYWRkYjQ3OGIxMzg3NWY='
 
-"""url = "https://accounts.spotify.com/api/token"
-headers = {'Authorization': 'Basic ' + secret}
+url = "https://accounts.spotify.com/api/token"
 payload = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
-request = requests.post(url, data=json.dumps(payload), headers=headers)
-print request"""
+headers = {'Authorization': 'Basic ' + secret}
+request = requests.post(url, data=payload, headers=headers)
 
 @app.route('/')
 def root():
