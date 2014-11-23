@@ -31,14 +31,33 @@ def create_playlist(userid, name):
 
 	return request.text
 
+def refresh_order(playlistid):
+	uris = {}
+	track_ids = []
+	playlist = db.get_playlist(playlistid)
+	tracks = _get_tracks(playlist)
+	userid = db.get_owner(playlistid)
+
+	for sorted_track in tracks:
+		track_ids.append('spotify:track:' + sorted_track['track_id'])
+
+	uris['uris'] = track_ids
+
+	url = '{0}/users/{1}/playlists/{2}/tracks'.format(API, userid, playlistid)
+	payload = uris
+	headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + get_access_token()}
+	request = requests.put(url, data=json.dumps(payload), headers=headers)
+
 @app.route('/upvote/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def upvote(playlistid, trackid):
 	db.upvote_track(playlistid, trackid)
+	refresh_order(playlistid)
 	return jsonify(Success="Track was upvoted")
 
 @app.route('/downvote/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def downvote(playlistid, trackid):
 	db.downvote_track(playlistid, trackid)
+	refresh_order(playlistid)
 	return jsonify(Success="Track was downvoted")
 
 @app.route('/add-song/playlist/<playlistid>/track/<trackid>', methods=['POST'])
@@ -73,6 +92,7 @@ def get_playlist(playlistid):
 
 	return jsonify(playlist=(dict(
 		id=playlist._id,
+		name=playlist.name,
 		owner=playlist.owner,
 		tracks=_get_tracks(playlist))))
 
