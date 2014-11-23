@@ -39,22 +39,46 @@
 
 
   <script type="text/ng-template" id="addPlaylist.html">
-    <div ng-controller="AddPlaylistCtrl" class="text-center">
+    <div ng-controller="AddPlaylistCtrl" class="text-center playlists">
 
-      <div class="search_container row"> 
-        <div class = "col-xs-10">     
-        <form ng-submit="addPlaylist()">
-            <input  type="text"  ng-model="playlist.name" placeholder = "Create a playlist" />
-            <button type="submit" ng-hide="true">Add</button>
-        </form>
-        </div>
-        <div class="col-xs-1 trackAdd" ng-click="addPlaylist()">
-          +
-        </div>
-      </div>
+      <div class = "start-container">
+        <div class="addplaylist"> 
+          <div class = "row">
+              <div class = "col-xs-12">
+             <p><b> Welcome! </b> Create a new playlist or choose from recent playlists to get started. </p>
+             </div>   
+          </div> 
 
-      <div class="row" ng-repeat="playlist in playlists.playlists">
-        <a href="#/playlist/{{ playlist.id }}">{{ playlist.name }}</a>
+          <div class = "row">
+           <form class = "col-xs-10"ng-submit="addPlaylist()">
+                <input  type="text"  ng-model="playlist.name" placeholder = "Create a playlist" />
+               <button type="submit" ng-hide="true">Add</button>
+            </form>
+            <div class="col-xs-1 trackAdd" ng-click="addPlaylist()">
+            +
+             </div>
+          </div>
+
+        </div>
+
+        <div class = "playlist-container">
+          <div class="row" ng-repeat="playlist in playlists.playlists">
+              <a class = "playlist col-xs-12"href="#/playlist/{{ playlist.id }}">{{ playlist.name }}</a>
+           </div>
+        </div>
+
+        <div class = "info">
+          <p>
+          <b>JUKEBOX JOINT</b> IS NOT AN APP. IT’S NOT A SIMPLE TOOL – NOR A FUN “GADGET”. IT’S DEFINITELY NOT A GAME. IT A PARTY SAVER. AN UNSUNG HERO. jukebox joint is <b>THE BATMAN OF PARTY UTILITIES. </b>
+          </p>
+          <p>
+JUKEBOX JOINT WILL BE FOR YOUR PARTY <b> WHAT A BAG OF CHILI CHEESE IS FOR YOUR SATURDAY NIGHT </b> AT THREE O’CLOCK. JUKEBOX JOINT IS A CURE TO THE JERK WHO ALWAYS PLAYS HIS SONGS WITHOUT RESPECTING THE QUEUE. JUKEBOX JOINT WILL <b> PROBABLY EVEN SAVE YOUR LIFE. </b>
+          </p>
+
+          <p>
+            <img src="css/icon_jj_black.png" width = "50px"/>
+          </p>
+        <div>
       </div>
     </div>
   </script>
