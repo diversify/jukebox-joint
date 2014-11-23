@@ -58,9 +58,8 @@
           <button type="submit" ng-hide="true">Search</button>
         </form>
       </div>
-      {{ searching }}
-      <div class="trackList" ng-repeat="track in searchResults.tracks.items" ng-show="!hasAdded">
-      <div class="track row">
+      <div class="searchList" ng-repeat="track in searchResults.tracks.items" ng-show="!hasAdded">
+      <div class="track row searchRow">
         <div class="col-xs-3">
           <img ng-if="track" src="{{ track.album.images[0].url }}" style="width:100%" />
         </div>
@@ -68,8 +67,8 @@
           <h2 class = "track_title">{{ track.name }}</h1>
           <h3 class = "artist">{{ track.artists[0].name }}</h3>
         </div>
-        <div class="col-xs-3" ng-click="addSong(track.id)">
-          Add to playlist
+        <div class="col-xs-3 trackAdd" ng-click="addSong(track.id)">
+          +
         </div>
       </div>
     </div>

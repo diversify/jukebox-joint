@@ -166,6 +166,30 @@ body{
 	outline:none;
 }
 
+.searchList
+{
+	background-color: #5e5e5e;
+}
+
+.searchRow
+{
+	background-color: #5e5e5e !important;
+	color: #fff !important;
+	padding:10px;
+	border-bottom:1px solid #6c6c6c;
+}
+
+.trackAdd
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+.searchRow .artist
+{
+	color: #8c8c8c !important;
+}
 
 
 
