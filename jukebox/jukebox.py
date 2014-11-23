@@ -5,7 +5,7 @@ import requests
 import json
 import db
 
-refresh_token = 'AQB6SmB6U3b9Gto2AOAPyde21Jd63ew1HxE1q3K20icxitUh3kkjLVj8tN5woojpvLQHR84au1UwDK97KFHQ19rF16N5ZA2kqsOHSNEjX0OtgCXHoZBoHAnNmbfG9siOrVM'
+refresh_token = 'AQCTzySWQRMfXbACwv77MHEJfGHAmCIk_qLRx0cKdhXy-GLfCfdHX0F9sDV3FFiEjn6pGD8lYyFb0wVU_tmd9h-Yw2mEFRRKXJ6UFvOJRKgiXjgIfzMWsLpVa6WEwESSgtM'
 secret = 'ODI5ZGM1ZjczNmE5NDJiNGI4OTVhZDZjZGI2YjE3MmU6ZmI3NTQ1YjhkNTQ3NDg0OWIzYWRkYjQ3OGIxMzg3NWY='
 
 API = 'https://api.spotify.com/v1'
