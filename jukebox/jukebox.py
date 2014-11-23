@@ -46,6 +46,7 @@ def _get_tracks(playlist):
 		track = {}
 		track['track_id'] = track_entry.track_id
 		track['voteCount'] = track_entry.vote_count
+		track['id'] = track_entry._id
 		tracks.append(track)
 
 	tracks.sort(key=lambda x: x['voteCount'], reverse=True)
