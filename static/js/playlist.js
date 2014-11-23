@@ -33,7 +33,6 @@ angular.module('jukeboxApp')
         return;
       }
       
-      thisTrack.voteCount++;
 
       $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
         success(function(data, status, headers, config) {
@@ -42,7 +41,7 @@ angular.module('jukeboxApp')
           var thisTrack = _.find($scope.tracks, function(trk) {
             return trk.id == track.id;
           });
-          
+          thisTrack.voteCount++;
           
           console.log('Upvoted');
         }).
