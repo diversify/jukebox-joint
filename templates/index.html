@@ -40,12 +40,19 @@
 
   <script type="text/ng-template" id="addPlaylist.html">
     <div ng-controller="AddPlaylistCtrl" class="text-center">
-      <h1>Add a new playlist</h1>
 
-      <input type="text" ng-model="playlist.name" />
-      
-      <button ng-click="addPlaylist()">Add playlist</button>
-      
+      <div class="search_container row"> 
+        <div class = "col-xs-10">     
+        <form ng-submit="addPlaylist()">
+            <input  type="text"  ng-model="playlist.name" placeholder = "Create a playlist" />
+            <button type="submit" ng-hide="true">Add</button>
+        </form>
+        </div>
+        <div class="col-xs-1 trackAdd" ng-click="addPlaylist()">
+          +
+        </div>
+      </div>
+
       <div class="row" ng-repeat="playlist in playlists.playlists">
         <a href="#/playlist/{{ playlist.id }}">{{ playlist.name }}</a>
       </div>
@@ -57,7 +64,7 @@
     <div ng-controller="SearchSongCtrl">
       <div class="search_container">
         <form ng-submit="searchSong()">
-          <input class = "searchbox" ng-model="searchQuery" placeholder = "Search for songs" />
+          <input ng-model="searchQuery" placeholder = "Search for songs" />
           <button type="submit" ng-hide="true">Search</button>
         </form>
       </div>
