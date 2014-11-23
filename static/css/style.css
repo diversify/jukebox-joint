@@ -1,7 +1,7 @@
 * {
-	-webkit-user-select: none !important;
-	-moz-user-select: none !important;
-	user-select: none !important;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
 }
 
 html{font-size: 62.5%}
@@ -164,8 +164,8 @@ body{
 	padding:5px 16px;
 	text-transform:uppercase;
 	outline:none;
-	-webkit-user-select: auto;
-	user-select:auto;
+	-webkit-user-select: auto !important;
+	user-select:auto !important;
 }
 
 .searchList
