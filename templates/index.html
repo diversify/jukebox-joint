@@ -22,7 +22,7 @@
   <script src="js/spotify.js"></script>
   <script src="js/playlist.js"></script>
 </head>
-<body ng-app="jukeboxApp">
+<body ng-app="jukeboxApp" ng-cloak>
   
   <script type="text/ng-template" id="search.html">
     <div ng-controller="SearchSongCtrl">
@@ -69,13 +69,17 @@
   
   <script type="text/ng-template" id="playlist.html">
     <div ng-controller="PlaylistCtrl">
-      <h1>{{ name }}</h1>
+      <h1>{{ name }}</h1> (SHOULD CONVERT TO REAL NAME)
       <h4>Share this Playlist: URL HERE</h4>
       <button ng-click="addSong()">Add a song</button>
-      <div class="row" ng-repeat="track in tracks | orderBy: 'vote' : true">
-        <div class="col-xs-3">image</div>
-        <div class="col-xs-6">{{ track.ID }} SHOULD BE NAME {{ track.voteCount }}</div>
+      <div class="row" ng-repeat="track in tracks | orderBy: 'voteCount' : true">
+        <div class="col-xs-3"><img src="{{ track.album.images[0].url }}" width="128" /></div>
+        <div class="col-xs-6">
+          <h3>{{ track.name }}</h2>
+          <h5>{{ track.album.name }}</h4>
+        </div>
         <div class="col-xs-3">
+          {{ track.voteCount }} {{ track.voteCount === 0 || track.voteCount > 1 ? 'votes' : 'vote'}}
           <button ng-click="upvote(track)">Upvote</button>
           <button ng-click="downvote(track)">Downvote</button>
         </div>
