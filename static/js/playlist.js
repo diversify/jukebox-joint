@@ -31,7 +31,9 @@ angular.module('jukeboxApp')
       if(typeof $scope.upvoted[track.dbid] !== 'undefined' && $scope.upvoted[track.dbid] !== false) {
         return;
       }
-            
+      
+      thisTrack.voteCount++;
+
       $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
         success(function(data, status, headers, config) {
           $scope.upvoted[track.dbid] = true;
@@ -40,7 +42,6 @@ angular.module('jukeboxApp')
             return trk.id == track.id;
           });
           
-          thisTrack.voteCount++;
           
           console.log('Upvoted');
         }).
@@ -54,16 +55,18 @@ angular.module('jukeboxApp')
       if(typeof $scope.downvoted[track.dbid] !== 'undefined' && $scope.downvoted[track.dbid] !== false) {
         return;
       }
-            
+
       var thisTrack = _.find($scope.tracks, function(trk) {
         return trk.id == track.id;
       });
+      
+        thisTrack.voteCount--;
+
       
         $scope.downvoted[track.dbid] = true;
         $scope.upvoted[track.dbid] = false;
         $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
           success(function(data, status, headers, config) {
-            thisTrack.voteCount--;
             console.log('Downvoted');
       }).
       error(function(data, status, headers, config) {
