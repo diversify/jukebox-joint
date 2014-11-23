@@ -77,13 +77,10 @@
         <div class = "trackList" ng-repeat="track in tracks | orderBy: 'voteCount' : true" ng-swipe-left="downvote(track)" ng-swipe-right="upvote(track)">
 
               <div class = "track row"> 
-                <div class = "queue_value-container col-xs-1 col-md-1 ">
-                    <p class = "queue_value"> 1 </p>
-                </div>
                 <div class = " col-xs-2 col-md-2"> 
                    <img src="{{ track.album.images[0].url }}" alt="Album image" height="128" width="128" class="album_image  col-xs-12 col-md-12"></div>
                 
-                <div class = "track_info col-xs-4 col-md-4">
+                <div class = "track_info col-xs-5 col-md-5">
                   <h2 class= "track_title"> {{ track.name }} </h2>
                   <h3 class= "artist"> {{ track.artists[0].name }}  </h3>
                 </div>
