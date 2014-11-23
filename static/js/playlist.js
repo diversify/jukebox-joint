@@ -33,7 +33,7 @@ angular.module('jukeboxApp')
         return;
       }
       
-      track.voteCount--;
+      track.voteCount++;
       
 
       $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
