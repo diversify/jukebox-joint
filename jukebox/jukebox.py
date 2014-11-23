@@ -16,6 +16,15 @@ def root():
 def spoti_callback():
     return send_file('../templates/callback.html')
 
+@app.route('/create-playlist/user/<userid>/playlist-name/<name>', methods=['POST'])
+def create_playlist(userid, name):
+	access_token = get_access_token()
+	url = 'https://api.spotify.com/v1/users/{0}/playlists'.format(userid)
+	payload = {'name': name}
+	headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token}
+	request = requests.post(url, data=json.dumps(payload), headers=headers)
+	return request.text
+
 @app.route('/upvote/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def upvote(playlistid, trackid):
 	db.upvote_track(playlistid, trackid)
@@ -81,7 +90,6 @@ def get_access_token():
 	headers = {'Authorization': 'Basic ' + secret}
 	request = requests.post(url, data=payload, headers=headers)
 	return json.loads(request.text)['access_token']
-
 
 if __name__ == '__main__':
     app.run(debug=True)
