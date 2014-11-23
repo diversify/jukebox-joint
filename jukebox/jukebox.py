@@ -46,7 +46,7 @@ def add_song(playlistid, trackid):
 	userid = db.get_owner(playlistid)
 	url = '{0}/users/{1}/playlists/{2}/tracks'.format(API, userid, playlistid)
 	headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + get_access_token()} 
-	payload = {'uris': [trackid]}
+	payload = {'uris': ['spotify:track:' + trackid]}
 	request = requests.post(url, data=json.dumps(payload), headers=headers)
 
 	db.add_track(trackid, playlistid)
