@@ -59,18 +59,17 @@ angular.module('jukeboxApp')
         return trk.id == track.id;
       });
       
-      if(thisTrack.voteCount !== 0) {
-          $scope.downvoted[track.dbid] = true;
-          $scope.upvoted[track.dbid] = false;
-          $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
-            success(function(data, status, headers, config) {
-              thisTrack.voteCount--;
-              console.log('Downvoted');
-        }).
-        error(function(data, status, headers, config) {
-          console.log('Dun goofed');
-        });
-      }
+        $scope.downvoted[track.dbid] = true;
+        $scope.upvoted[track.dbid] = false;
+        $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
+          success(function(data, status, headers, config) {
+            thisTrack.voteCount--;
+            console.log('Downvoted');
+      }).
+      error(function(data, status, headers, config) {
+        console.log('Dun goofed');
+      });
+      
     };
     
     
