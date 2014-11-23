@@ -46,9 +46,25 @@
     </div>
   </script>
   
+  <script type="text/ng-template" id="playlist.html">
+    <div ng-controller="PlaylistCtrl">
+      <h1>{{ name }}</h1> (SHOULD CONVERT TO REAL NAME)
+      <h4>Share this Playlist: URL HERE</h4>
+      <button ng-click="addSong()">Add a song</button>
+      <div class="row" ng-repeat="track in tracks | orderBy: 'voteCount' : true">
+        <div class="col-xs-3"><img src="{{ track.album.images[0].url }}" width="128" /></div>
+        <div class="col-xs-6">
+          <h3>{{ track.name }}</h2>
+          <h5>{{ track.album.name }}</h4>
+        </div>
+      </div>
+            
+    </div>
+  </script>
+  
 
   <script type="text/ng-template" id="playlist.html">
-
+   
     <div ng-controller="SearchSongCtrl">
 
       <form ng-submit="searchSong()">
@@ -70,44 +86,6 @@
         </div>
       </div>
     </div>
-
-  </script>
-  <script type="text/ng-template" id="playlist.html">
-    <div ng-controller="PlaylistCtrl">
-      <h1>{{ name }}</h1> (SHOULD CONVERT TO REAL NAME)
-      <h4>Share this Playlist: URL HERE</h4>
-      <button ng-click="addSong()">Add a song</button>
-      <div class="row" ng-repeat="track in tracks | orderBy: 'voteCount' : true">
-        <div class="col-xs-3"><img src="{{ track.album.images[0].url }}" width="128" /></div>
-        <div class="col-xs-6">
-          <h3>{{ track.name }}</h2>
-          <h5>{{ track.album.name }}</h4>
-        </div>
-      </div>
-            
-    </div>
-  </script>
-  
-
-  <script type="text/ng-template" id="playlist.html">
-    <div ng-controller="SearchSongCtrl">
-      <input class = "searchbox" ng-model="searchQuery" ng-blur="searchSong()" />
-      {{ searching }}
-      <div class="trackList" ng-repeat="track in searchResults.tracks.items">
-      <div class="track row">
-        <div class="col-xs-3">
-          <img ng-if="track" src="{{ track.album.images[0].url }}" style="width:100%" />
-        </div>
-        <div class="col-xs-6">
-          <h2 class = "track_title">{{ track.name }}</h1>
-          <h3 class = "artist">{{ track.artists[0].name }}</h3>
-        </div>
-        <div class="col-xs-3" ng-click="addSong()">
-          Add to playlist
-        </div>
-      </div>
-    </div>
-
    <div ng-controller = "songListCtrl">
       <div class = "songList_container container-fluid">
         <div class = "trackList" ng-repeat="tracks in playlist">
@@ -125,7 +103,7 @@
                 </div>
                 
                 <div class = "col-xs-2 col-md-2 rating"> 
-                  <p ng-class= "{'test': tracks.rating == '0' || tracks.rating == '2'}"} > {{ tracks.rating }}</p>
+                  <p  > {{ tracks.rating }}</p>
                 </div>
 
                 <div class = "user_image-container col-xs-2 col-md-2">
