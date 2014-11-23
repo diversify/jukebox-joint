@@ -164,6 +164,8 @@ body{
 	padding:5px 16px;
 	text-transform:uppercase;
 	outline:none;
+	-webkit-user-select: auto;
+	user-select:auto;
 }
 
 .searchList
