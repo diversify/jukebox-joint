@@ -73,10 +73,5 @@ angular.module('jukeboxApp')
       }
     };
     
-    $scope.addSong = function()
-    {
-      $location.path('/search/' + $scope.playlistId);
-    };
-    
     
   });
