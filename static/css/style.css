@@ -36,6 +36,11 @@ body{
 	.album_image{
 		padding-top: 1.1em !important;
 	}
+	
+	.track_info
+	{
+		padding-left: 15px !important;
+	}
 }
 
 /*Medium Screens*/
