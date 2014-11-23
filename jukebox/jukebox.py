@@ -44,7 +44,7 @@ def _get_tracks(playlist):
 	tracks = []
 	for track_entry in db.get_tracks_for_playlist(playlist._id):
 		track = {}
-		track['ID'] = track_entry._id
+		track['track_id'] = track_entry.track_id
 		track['voteCount'] = track_entry.vote_count
 		tracks.append(track)
 

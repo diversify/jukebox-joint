@@ -16,11 +16,12 @@ class Playlist(Base):
 class Track(Base):
 	__tablename__ = 'tracks'
 	
-	_id = Column(Unicode, primary_key=True)
+	_id = Column(Integer, autoincrement=True, primary_key=True)
+	track_id = Column(Unicode, primary_key=True)
 	playlist_id = Column(Unicode)
 	vote_count = Column(Integer)
 
 	def __init__(self, id, playlist_id):
-		self._id = id
+		self.track_id = id
 		self.playlist_id = playlist_id
 		self.vote_count = 0
