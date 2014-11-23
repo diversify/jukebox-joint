@@ -274,11 +274,10 @@ body{
 
 .trackAdd
 {
-	text-align: center;
 	font-weight: bold;
 	font-size: 40px;
 	opacity: 0.6;
-	line-height:1;
+	line-height:1.1;
 }
 
 .searchRow .artist
