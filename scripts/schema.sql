@@ -1,4 +1,5 @@
 CREATE TABLE playlists(_id TEXT PRIMARY KEY,
+					  name TEXT,
 					  owner TEXT);
 
 CREATE TABLE tracks(_id SERIAL PRIMARY KEY,
