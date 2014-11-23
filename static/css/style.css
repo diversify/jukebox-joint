@@ -215,6 +215,8 @@ body{
 	color: #fff !important;
 	padding:10px;
 	border-bottom:1px solid #6c6c6c;
+	border-left:0 !important;
+	border-right:0 !important;
 }
 
 .trackAdd
