@@ -14,7 +14,8 @@ body{
 
 }
 
-.container
+.container,
+.container-fluid
 {
 	padding-left:0 !important;
 	padding-right:0 !important;
@@ -41,7 +42,7 @@ body{
 	{
 		padding-left: 20px !important;
 	}
-}
+}	
 
 /*Medium Screens*/
 @media (max-width: 450px) { 
