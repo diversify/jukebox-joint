@@ -88,6 +88,9 @@
         <div class = "trackList" ng-repeat="track in tracks | orderBy: 'voteCount' : true" ng-swipe-left="downvote(track)" ng-swipe-right="upvote(track)">
 
               <div class = "track row"> 
+                <div class="wrapperred" id="red-{{track.id}}"></div>
+                <div class="wrappergreen" id="green-{{track.id}}"></div>
+	
                 <div class = " col-xs-2 col-md-2"> 
                    <img src="{{ track.album.images[0].url }}" alt="Album image" height="128" width="128" class="album_image  col-xs-12 col-md-12"></div>
                 

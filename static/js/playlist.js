@@ -35,6 +35,12 @@ angular.module('jukeboxApp')
       
       track.voteCount++;
       
+      angular.element(document.querySelector('#green-' + track.id)).prepend('<div class="overlay green"></div>');
+      setTimeout(function(){
+        angular.element(document.querySelector('#green-' + track.id)).find('div').remove();
+      }, 450);
+
+      
 
       $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
         success(function(data, status, headers, config) {
@@ -62,6 +68,11 @@ angular.module('jukeboxApp')
       });
       
         thisTrack.voteCount--;
+        
+        angular.element(document.querySelector('#red-' + track.id)).prepend('<div class="overlay red"></div>');
+        setTimeout(function(){
+          angular.element(document.querySelector('#red-' + track.id)).find('div').remove();
+        }, 450);
 
       
         $scope.downvoted[track.dbid] = true;

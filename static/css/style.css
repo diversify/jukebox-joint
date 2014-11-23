@@ -231,4 +231,148 @@ body{
 }
 
 
+.red {
+	background: #e8a4a4;
+	width: 1%;
+	height:100%;
+
+	animation: animationScaleRed ease-in-out 0.45s;
+	animation-iteration-count: 1;
+	transform-origin: 50% 50%;
+	animation-fill-mode:forwards; /*when the spec is finished*/
+	-webkit-animation: animationScaleRed ease-in-out 0.45s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ 
+	z-index: 999;
+}
+
+@keyframes animationScaleRed{
+  0% {
+    transform:  scaleX(0.10) ;
+  }
+  40% {
+    transform:  scaleX(4.35) ;
+  }
+  100% {
+    transform:  scaleX(1.00) ;
+  }
+}
+@-webkit-keyframes animationScaleRed {
+  0% {
+    -webkit-transform:  scaleX(0.10) ;
+  }
+  40% {
+    -webkit-transform:  scaleX(4.35) ;
+  }
+  100% {
+    -webkit-transform:  scaleX(1.00) ;
+  }
+
+}
+
+.green {
+	background: #bbf1b3;
+	width: 1%;
+	height: 100%;
+
+	animation: animationScaleGreen ease-in-out 0.45s;
+	animation-iteration-count: 1;
+	transform-origin: 50% 50%;
+	animation-fill-mode:forwards; /*when the spec is finished*/
+	-webkit-animation: animationScaleGreen ease-in-out 0.45s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ 
+}
+
+@keyframes animationScaleGreen{
+  0% {
+    transform:  scaleX(0.10) ;
+  }
+  40% {
+    transform:  scaleX(4.35) ;
+  }
+  100% {
+    transform:  scaleX(1.00) ;
+  }
+}
+@-webkit-keyframes animationScaleGreen {
+  0% {
+    -webkit-transform:  scaleX(0.10) ;
+  }
+  40% {
+    -webkit-transform:  scaleX(4.35) ;
+  }
+  100% {
+    -webkit-transform:  scaleX(1.00) ;
+  }
+}
+
+.wrappergreen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+
+	animation: animationMoveGreenWrapper ease-out 0.45s;
+	animation-iteration-count: 1;
+	transform-origin: 50% 50%;
+	animation-fill-mode:forwards; /*when the spec is finished*/
+	-webkit-animation: animationMoveGreenWrapper ease-out 0.45s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ 
+}
+
+@keyframes animationMoveGreenWrapper{
+  0% {
+    transform:  translate(0px,0px)  ;
+  }
+  100% {
+    transform:  translate(99%,0px)  ;
+  }
+}
+@-webkit-keyframes animationMoveGreenWrapper {
+  0% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+  100% {
+    -webkit-transform:  translate(99%,0px)  ;
+  }
+}
+
+.wrapperred {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index:999;
+
+	animation: animationMoveRedWrapper ease-out 0.45s;
+	animation-iteration-count: 1;
+	transform-origin: 50% 50%;
+	animation-fill-mode:forwards; /*when the spec is finished*/
+	-webkit-animation: animationMoveRedWrapper ease-out 0.45s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ 
+}
+
+@keyframes animationMoveRedWrapper{
+  0% {
+    transform:  translate(99%,0px)  ;
+  }
+  100% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+@-webkit-keyframes animationMoveRedWrapper {
+  0% {
+    -webkit-transform:  translate(99%,0px)  ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
 
