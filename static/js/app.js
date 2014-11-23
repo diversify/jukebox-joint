@@ -1,6 +1,7 @@
 angular
   .module('jukeboxApp', [
     'ngRoute',
+    'ngTouch',
     'ngResource',
     'spotify',
     'underscore'

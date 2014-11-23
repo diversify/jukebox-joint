@@ -86,24 +86,24 @@
         </div>
       </div>
     </div>
-   <div ng-controller = "songListCtrl">
+   <div ng-controller = "PlaylistCtrl">
       <div class = "songList_container container-fluid">
-        <div class = "trackList" ng-repeat="tracks in playlist">
+        <div class = "trackList" ng-repeat="track in tracks" ng-swipe-left="downvote(track)" ng-swipe-right="upvote(track)">
 
               <div class = "track row"> 
                 <div class = "queue_value-container col-xs-1 col-md-1 ">
                     <p class = "queue_value"> 1 </p>
                 </div>
                 <div class = " col-xs-2 col-md-2"> 
-                   <img src="css/fake_album.png" alt="Album image" height="128" width="128" class="album_image  col-xs-12 col-md-12"></div>
+                   <img src="{{ track.album.images[0].url }}" alt="Album image" height="128" width="128" class="album_image  col-xs-12 col-md-12"></div>
                 
                 <div class = "track_info col-xs-4 col-md-4">
-                  <h2 class= "track_title"> {{ tracks.name }} </h2>
-                  <h3 class= "artist"> {{ tracks.artist }}  </h3>
+                  <h2 class= "track_title"> {{ track.name }} </h2>
+                  <h3 class= "artist"> {{ track.artists[0].name }}  </h3>
                 </div>
                 
                 <div class = "col-xs-2 col-md-2 rating"> 
-                  <p  > {{ tracks.rating }}</p>
+                  <p  > {{ track.voteCount }}</p>
                 </div>
 
                 <div class = "user_image-container col-xs-2 col-md-2">
