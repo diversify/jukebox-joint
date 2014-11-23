@@ -77,6 +77,7 @@
     </div>
    <div ng-controller = "PlaylistCtrl">
       <div class = "songList_container container-fluid">
+      <div class="text-right currentPlaylist">Current playlist: <strong>{{ name }}</strong></div>
         <div class = "trackList" ng-repeat="track in tracks | orderBy: 'voteCount' : true" ng-swipe-left="downvote(track)" ng-swipe-right="upvote(track)">
 
               <div class = "track row"> 

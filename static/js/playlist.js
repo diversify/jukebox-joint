@@ -9,6 +9,7 @@ angular.module('jukeboxApp')
     
     $http.get('/get-playlist/' + $scope.playlistId).
         success(function(data, status, headers, config) {
+          $scope.name = data.playlist.name;
           var tracks = data.playlist.tracks;
           $scope.newTracks = [];
           _(tracks).forEach(function(trk) {
