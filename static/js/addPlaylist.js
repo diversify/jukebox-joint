@@ -17,9 +17,9 @@ angular.module('jukeboxApp')
     {
       $scope.playlist.playlistId = $scope.playlist.name;
       /* Save it in Jukebox */
-      Playlist.create($scope.playlist, function() {
+      Playlist.create($scope.playlist, function(data) {
         /* GET THE PLAYLIST AGAIN */
-        $location.path("/playlist/" + $scope.playlist.playlistId); // THIS IS ONLY FOR MOCKS
+        $location.path("/playlist/" + data.id); // THIS IS ONLY FOR MOCKS
       });
         
     };
