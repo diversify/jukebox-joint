@@ -1,8 +1,10 @@
+import os
+
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, func
 from models import Playlist, Track
 
-engine = create_engine('postgresql://jukeboxuser:@localhost/jukebox', encoding='utf-8')
+engine = create_engine(os.environ.get('DATABASE_URL'), encoding='utf-8')
 session = sessionmaker(bind=engine)()
 
 def add_track(trackid, playlistid):
