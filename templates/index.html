@@ -87,7 +87,9 @@
                 </div>
                 
                 <div class = "col-xs-2 col-md-2 rating"> 
-                  <p  > {{ track.voteCount }}</p>
+                  {{ determineRating(track) }}
+                  <p  class = "{{ratingClass}}"> 
+                  {{ track.voteCount }}</p>
                 </div>
               </div>
             </div>

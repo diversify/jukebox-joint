@@ -71,6 +71,15 @@ angular.module('jukeboxApp')
       });
       
     };
-    
+
+    $scope.determineRating = function(track){
+      $scope.ratingClass = 'neutral';
+      if(track.voteCount > 0){
+        $scope.ratingClass = 'good';
+      }
+      else if(track.voteCount < 0){
+        $scope.ratingClass = 'bad';
+      };
+    };
     
   });
