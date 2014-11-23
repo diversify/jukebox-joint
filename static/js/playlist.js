@@ -3,12 +3,22 @@ angular.module('jukeboxApp')
     $scope.playlistId = $routeParams.playlistId;
     $scope.userId = 'gaeamearth1';
     
-    $scope.name = 'Good playlist';
+    $scope.name = $scope.playlistId;
     
     $http.get('/get-playlist/' + $scope.playlistId).
         success(function(data, status, headers, config) {
-          $scope.tracks = data.playlist.tracks;
-          console.log($scope.playlist);
+          var tracks = data.playlist.tracks;
+          $scope.newTracks = [];
+          _(tracks).forEach(function(trk) {
+            Spotify.getTrack(trk.ID).then(function (data) {
+              var track = data;
+              track.voteCount = trk.voteCount;
+              $scope.newTracks.push(track);
+              console.log(track);
+            });
+          });
+          $scope.tracks = $scope.newTracks;
+          console.log('Tracks loaded');
         }).
         error(function(data, status, headers, config) {
           console.log('Dun goofed');
@@ -16,10 +26,10 @@ angular.module('jukeboxApp')
     
     $scope.upvote = function(track)
     {
-      $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.ID).
+      $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.id).
         success(function(data, status, headers, config) {
           var thisTrack = _.find($scope.tracks, function(trk) {
-            return trk.ID == track.ID;
+            return trk.id == track.id;
           });
           
           thisTrack.voteCount++;
@@ -34,11 +44,11 @@ angular.module('jukeboxApp')
     $scope.downvote = function(track)
     {
       var thisTrack = _.find($scope.tracks, function(trk) {
-        return trk.ID == track.ID;
+        return trk.id == track.id;
       });
       
       if(thisTrack.voteCount !== 0) {
-          $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.ID).
+          $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.id).
             success(function(data, status, headers, config) {
               thisTrack.voteCount--;
               console.log('Downvoted');
