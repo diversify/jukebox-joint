@@ -28,40 +28,18 @@
 <body ng-app="jukeboxApp" ng-cloak>
   
   <script type="text/ng-template" id="addPlaylist.html">
-    <div ng-controller="AddPlaylistCtrl">
-      Add a new playlist
+    <div ng-controller="AddPlaylistCtrl" class="text-center">
+      <h1>Add a new playlist</h1>
 
       <input ng-model="playlist.name" />
       
       <button ng-click="addPlaylist()">Add playlist</button>
+      
       <div class="row" ng-repeat="playlist in playlists.playlists">
-        <a href="#/playlist/{{ playlist.id }}">{{ playlist.id }}</a>
+        <a href="#/playlist/{{ playlist.id }}">{{ playlist.name }}</a>
       </div>
     </div>
   </script>
-  
-  <script type="text/ng-template" id="login.html">
-    <div ng-controller="LoginCtrl">      
-      <button ng-click="loginUser()">Sign in with Spotify</button>
-    </div>
-  </script>
-  
-  <script type="text/ng-template" id="playlist.html">
-    <div ng-controller="PlaylistCtrl">
-      <h1>{{ name }}</h1> (SHOULD CONVERT TO REAL NAME)
-      <h4>Share this Playlist: URL HERE</h4>
-      <button ng-click="addSong()">Add a song</button>
-      <div class="row" ng-repeat="track in tracks | orderBy: 'voteCount' : true">
-        <div class="col-xs-3"><img src="{{ track.album.images[0].url }}" width="128" /></div>
-        <div class="col-xs-6">
-          <h3>{{ track.name }}</h2>
-          <h5>{{ track.album.name }}</h4>
-        </div>
-      </div>
-            
-    </div>
-  </script>
-  
 
   <script type="text/ng-template" id="playlist.html">
    
@@ -88,7 +66,7 @@
     </div>
    <div ng-controller = "PlaylistCtrl">
       <div class = "songList_container container-fluid">
-        <div class = "trackList" ng-repeat="track in tracks" ng-swipe-left="downvote(track)" ng-swipe-right="upvote(track)">
+        <div class = "trackList" ng-repeat="track in tracks | orderBy: 'voteCount' : true" ng-swipe-left="downvote(track)" ng-swipe-right="upvote(track)">
 
               <div class = "track row"> 
                 <div class = "queue_value-container col-xs-1 col-md-1 ">
