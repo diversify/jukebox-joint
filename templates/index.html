@@ -30,7 +30,7 @@
     <header>
     <div class = "row">
 
-    <img src = "css/logo.png" class = "col-xs-8 col-xs-offset-2"/>
+    <img src = "css/logo.png" class = "col-xs-12"/>
     </div>
   </header>
 
@@ -52,11 +52,12 @@
   <script type="text/ng-template" id="playlist.html">
    
     <div ng-controller="SearchSongCtrl">
-
-      <form ng-submit="searchSong()">
-        <input class = "searchbox" ng-model="searchQuery" placeholder = "Search for songs..." />
-        <button type="submit">Search</button>
-      </form>
+      <div class="search_container">
+        <form ng-submit="searchSong()">
+          <input class = "searchbox" ng-model="searchQuery" placeholder = "Search for songs..." />
+          <button type="submit" ng-hide="true">Search</button>
+        </form>
+      </div>
       {{ searching }}
       <div class="trackList" ng-repeat="track in searchResults.tracks.items" ng-show="!hasAdded">
       <div class="track row">

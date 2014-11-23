@@ -136,8 +136,22 @@ body{
   top: 0; left: 0; bottom: 0; right: 0; 
 }
 
+.search_container
+{
+	width:100%;background-color:#5e5e5e;height:52px;
+	box-sizing: border-box;
+	text-align:center;
+}
 
-
+.search_container input
+{
+	width:90%;
+	margin: 10px auto;
+	font-size: 16px;
+	border-radius:20px;
+	color: #fff;
+	background-color: #424242;
+}
 
 
 
