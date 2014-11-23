@@ -72,7 +72,7 @@
         <button type="submit">Search</button>
       </form>
       {{ searching }}
-      <div class="trackList" ng-repeat="track in searchResults.tracks.items">
+      <div class="trackList" ng-repeat="track in searchResults.tracks.items" ng-show="!hasAdded">
       <div class="track row">
         <div class="col-xs-3">
           <img ng-if="track" src="{{ track.album.images[0].url }}" style="width:100%" />
