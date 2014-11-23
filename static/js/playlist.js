@@ -28,14 +28,14 @@ angular.module('jukeboxApp')
     
     $scope.upvote = function(track)
     {
-      if(typeof $scope.upvoted[track.dbid] !== 'undefined') {
+      if(typeof $scope.upvoted[track.dbid] !== 'undefined' && $scope.upvoted[track.dbid] !== false) {
         return;
       }
-      
-      $scope.upvoted[track.dbid] = true;
-      
+            
       $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
         success(function(data, status, headers, config) {
+          $scope.upvoted[track.dbid] = true;
+          $scope.downvoted[track.dbid] = false;
           var thisTrack = _.find($scope.tracks, function(trk) {
             return trk.id == track.id;
           });
@@ -51,17 +51,17 @@ angular.module('jukeboxApp')
     
     $scope.downvote = function(track)
     {
-      if(typeof $scope.downvoted[track.dbid] !== 'undefined') {
+      if(typeof $scope.downvoted[track.dbid] !== 'undefined' && $scope.downvoted[track.dbid] !== false) {
         return;
       }
-      
-      $scope.downvoted[track.dbid] = true;
-      
+            
       var thisTrack = _.find($scope.tracks, function(trk) {
         return trk.id == track.id;
       });
       
       if(thisTrack.voteCount !== 0) {
+          $scope.downvoted[track.dbid] = true;
+          $scope.upvoted[track.dbid] = false;
           $http.post('/downvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
             success(function(data, status, headers, config) {
               thisTrack.voteCount--;
