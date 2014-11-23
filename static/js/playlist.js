@@ -34,18 +34,19 @@ angular.module('jukeboxApp')
       }
       
       track.voteCount++;
+      $scope.upvoted[track.dbid] = true;
+      $scope.downvoted[track.dbid] = false;
       
-      angular.element(document.querySelector('#green-' + track.id)).prepend('<div class="overlay green"></div>');
-      setTimeout(function(){
-        angular.element(document.querySelector('#green-' + track.id)).find('div').remove();
-      }, 450);
+      angular.element(document.querySelector('#track-' + track.id)).prepend('<div id="slide-' + track.id + '" class="wrappergreen"><div class="overlay green"></div></div>');
+        setTimeout(function(){
+          angular.element(document.querySelector('#slide-' + track.id)).remove();
+        }, 450);
 
       
 
       $http.post('/upvote/playlist/' + $scope.playlistId + '/track/' + track.dbid).
         success(function(data, status, headers, config) {
-          $scope.upvoted[track.dbid] = true;
-          $scope.downvoted[track.dbid] = false;
+          
           var thisTrack = _.find($scope.tracks, function(trk) {
             return trk.id == track.id;
           });
@@ -69,9 +70,9 @@ angular.module('jukeboxApp')
       
         thisTrack.voteCount--;
         
-        angular.element(document.querySelector('#red-' + track.id)).prepend('<div class="overlay red"></div>');
+        angular.element(document.querySelector('#track-' + track.id)).prepend('<div id="slide-' + track.id + '" class="wrapperred"><div class="overlay red"></div></div>');
         setTimeout(function(){
-          angular.element(document.querySelector('#red-' + track.id)).find('div').remove();
+          angular.element(document.querySelector('#slide-' + track.id)).remove();
         }, 450);
 
       
