@@ -52,7 +52,7 @@
     <div ng-controller="SearchSongCtrl">
 
       <form ng-submit="searchSong()">
-      <input class = "searchbox" ng-model="searchQuery" ng-blur="searchSong()" />
+        <input class = "searchbox" ng-model="searchQuery" placeholder = "Search for songs..." />
         <button type="submit">Search</button>
       </form>
       {{ searching }}
