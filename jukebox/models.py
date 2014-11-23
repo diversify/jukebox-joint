@@ -7,10 +7,12 @@ class Playlist(Base):
 	__tablename__ = 'playlists'
 	
 	_id = Column(Unicode, primary_key=True)
+	name = Column(Unicode)
 	owner = Column(Unicode)
 
-	def __init__(self, id, owner):
+	def __init__(self, id, name, owner):
 		self._id = id
+		self.name = name
 		self.owner = owner
 
 class Track(Base):

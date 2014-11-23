@@ -10,8 +10,8 @@ def add_track(trackid, playlistid):
 	session.add(track)
 	session.commit()
 
-def add_playlist(playlistid, user):
-	playlist = Playlist(playlistid, user)
+def add_playlist(playlistid, name, user):
+	playlist = Playlist(playlistid, name, user)
 	session.add(playlist)
 	session.commit()
 

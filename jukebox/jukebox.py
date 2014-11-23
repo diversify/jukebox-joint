@@ -27,7 +27,7 @@ def create_playlist(userid, name):
 
 	playlistid = json.loads(request.text)['id']
 	userid = json.loads(request.text)['owner']['id']
-	db.add_playlist(playlistid, userid)
+	db.add_playlist(playlistid, name, userid)
 
 	return request.text
 
@@ -82,6 +82,7 @@ def get_playlists(userid):
 	for playlist_entry in db.get_playlists(userid):
 		playlist = {}
 		playlist['id'] = playlist_entry._id
+		playlist['name'] = playlist_entry.name
 		playlist['owner'] = playlist_entry.owner
 		playlist['tracks'] = _get_tracks(playlist_entry)
 		playlists.append(playlist)
