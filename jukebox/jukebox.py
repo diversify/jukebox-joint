@@ -8,6 +8,8 @@ import db
 refresh_token = 'AQB6SmB6U3b9Gto2AOAPyde21Jd63ew1HxE1q3K20icxitUh3kkjLVj8tN5woojpvLQHR84au1UwDK97KFHQ19rF16N5ZA2kqsOHSNEjX0OtgCXHoZBoHAnNmbfG9siOrVM'
 secret = 'ODI5ZGM1ZjczNmE5NDJiNGI4OTVhZDZjZGI2YjE3MmU6ZmI3NTQ1YjhkNTQ3NDg0OWIzYWRkYjQ3OGIxMzg3NWY='
 
+API = 'https://api.spotify.com/v1'
+
 @app.route('/')
 def root():
     return send_file('../templates/index.html')
@@ -18,11 +20,15 @@ def spoti_callback():
 
 @app.route('/create-playlist/user/<userid>/playlist-name/<name>', methods=['POST'])
 def create_playlist(userid, name):
-	access_token = get_access_token()
-	url = 'https://api.spotify.com/v1/users/{0}/playlists'.format(userid)
+	url = '{0}/users/{1}/playlists'.format(API, userid)
 	payload = {'name': name}
-	headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token}
+	headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + get_access_token()}
 	request = requests.post(url, data=json.dumps(payload), headers=headers)
+
+	playlistid = json.loads(request.text)['id']
+	userid = json.loads(request.text)['owner']['id']
+	db.add_playlist(playlistid, userid)
+
 	return request.text
 
 @app.route('/upvote/playlist/<playlistid>/track/<trackid>', methods=['POST'])
@@ -37,17 +43,14 @@ def downvote(playlistid, trackid):
 
 @app.route('/add-song/playlist/<playlistid>/track/<trackid>', methods=['POST'])
 def add_song(playlistid, trackid):
-	db.add_track(trackid, playlistid)
-	return jsonify(Success="Track was added")
+	userid = db.get_owner(playlistid)
+	url = '{0}/users/{1}/playlists/{2}/tracks'.format(API, userid, playlistid)
+	headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + get_access_token()} 
+	payload = {'uris': [trackid]}
+	request = requests.post(url, data=json.dumps(payload), headers=headers)
 
-@app.route('/add-playlist/user/<userid>/playlist/<playlistid>', methods=['POST'])
-def add_playlist(userid, playlistid):
-	playlist = db.get_playlist(playlistid)
-	if playlist:
-		return jsonify(Error="Playlist is already added") 
-	
-	db.add_playlist(playlistid, userid)
-	return jsonify(Success="Playlist was added")
+	db.add_track(trackid, playlistid)
+	return request.text
 
 def _get_tracks(playlist):
 	tracks = []

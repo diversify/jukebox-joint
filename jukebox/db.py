@@ -22,6 +22,9 @@ def get_playlists(userid):
 	return session.query(Playlist).filter(
         (func.lower(Playlist.owner) == func.lower(userid))).all()
 
+def get_owner(playlistid):
+	return get_playlist(playlistid).owner
+
 def get_tracks_for_playlist(playlistid):
 	return session.query(Track).filter(Track.playlist_id == playlistid).all()
 
