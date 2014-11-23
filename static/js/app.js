@@ -23,6 +23,6 @@ angular
         templateUrl : 'playlist.html'
       })
       .otherwise({
-        redirectTo: '/playlist'
+        redirectTo: '/playlists'
       });
   });
