@@ -9,7 +9,7 @@ html{font-size: 62.5%}
 body{
 	 background-image: url('bg_tile.png');
 	background-color: #AAA;	
-	font-family: 'Open Sans' !important, sans-serif ;
+	font-family: 'Open Sans', sans-serif !important;
 	text-transform: uppercase;
 
 }
@@ -37,7 +37,7 @@ body{
 /*Medium Screens*/
 @media (max-width: 450px) { 
 	body{
-		font-size: 50.0% !important;
+		font-size: 60.0% !important;
 	}
 	.track_info{
 		padding-left: 0;
@@ -106,13 +106,13 @@ body{
 .track_title{
 	margin: 0.5em 0em;
 	font-size: 2em;
-	font-weight: bold;
+	font-weight: 700;
 	margin-bottom: 0.2em;
 }
 .artist{
 	margin-top: 0em;
  	font-size: 1.3em;
- 	font-weight: 400;
+ 	font-weight: 300;
 }
 
 .rating p {
