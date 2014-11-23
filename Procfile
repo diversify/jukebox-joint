@@ -1,0 +1,1 @@
+web: gunicorn --chdir jukebox jukebox:app
