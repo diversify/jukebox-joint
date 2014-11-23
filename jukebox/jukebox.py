@@ -8,11 +8,6 @@ import db
 refresh_token = 'AQB6SmB6U3b9Gto2AOAPyde21Jd63ew1HxE1q3K20icxitUh3kkjLVj8tN5woojpvLQHR84au1UwDK97KFHQ19rF16N5ZA2kqsOHSNEjX0OtgCXHoZBoHAnNmbfG9siOrVM'
 secret = 'ODI5ZGM1ZjczNmE5NDJiNGI4OTVhZDZjZGI2YjE3MmU6ZmI3NTQ1YjhkNTQ3NDg0OWIzYWRkYjQ3OGIxMzg3NWY='
 
-url = "https://accounts.spotify.com/api/token"
-payload = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
-headers = {'Authorization': 'Basic ' + secret}
-request = requests.post(url, data=payload, headers=headers)
-
 @app.route('/')
 def root():
     return send_file('../templates/index.html')
@@ -80,9 +75,11 @@ def get_playlists(userid):
 	return jsonify(playlists=playlists)
 
 def get_access_token():
+	url = "https://accounts.spotify.com/api/token"
 	payload = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
-	request = requests.post("https://accounts.spotify.com/api/token", params=payload)
-	print request.text['access_token']
+	headers = {'Authorization': 'Basic ' + secret}
+	request = requests.post(url, data=payload, headers=headers)
+	return json.loads(request.text)['access_token']
 
 
 if __name__ == '__main__':
